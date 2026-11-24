@@ -8,12 +8,12 @@
 Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora handles the rest.
 
 ![Platform](https://img.shields.io/badge/platform-Samsung%20Tizen%205.0%2B-1428A0)
-![Version](https://img.shields.io/badge/version-4.2.0-8b5cf6)
+![Version](https://img.shields.io/badge/version-4.9.10-8b5cf6)
 ![Languages](https://img.shields.io/badge/languages-English%20%7C%20Arabic-22d3ee)
 
 ![Lumora TV demo](screenshots/demo.gif)
 
-[![Download](https://img.shields.io/badge/Download-Lumora--TV.wgt-8b5cf6?style=for-the-badge)](https://github.com/mejri02/Lumora-TV_tizen/releases/latest/download/Lumora-TV.wgt)
+[![Download](https://img.shields.io/badge/Download-Lumora--TV.wgt-8b5cf6?style=for-the-badge)](https://github.com/mejri02/Lumora-TV_iptv_tizen/releases/latest/download/Lumora-TV.wgt)
 
 </div>
 
@@ -71,7 +71,7 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 - A Samsung Smart TV running **Tizen 5.0 or newer** (roughly 2019 models and later).
 - TV and computer (or phone) on the **same network**.
 - A Samsung account (used once to create the signing certificate).
-- The `Lumora-TV.wgt` file — [download the latest release](https://github.com/mejri02/Lumora-TV_tizen/releases/latest/download/Lumora-TV.wgt).
+- The `Lumora-TV.wgt` file — [download the latest release](https://github.com/mejri02/Lumora-TV_iptv_tizen/releases/latest/download/Lumora-TV.wgt).
 
 ---
 
@@ -91,7 +91,7 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 
 ### 2. Install with Apps2Samsung
 
-1. Download `Lumora-TV.wgt` from the [Releases page](https://github.com/mejri02/Lumora-TV_tizen/releases/latest). Then download and open Apps2Samsung from [apps2samsung.com](https://apps2samsung.com/).
+1. Download `Lumora-TV.wgt` from the [Releases page](https://github.com/mejri02/Lumora-TV_iptv_tizen/releases/latest). Then download and open Apps2Samsung from [apps2samsung.com](https://apps2samsung.com/).
 2. Make sure the computer is on the **same Wi-Fi / LAN** as the TV.
 3. **Scan** the network and select your TV, or enter the TV's IP address manually (TV: *Settings → General → Network → Network Status → IP Settings*).
 4. When asked, **sign in with your Samsung account**. This creates the signing certificate once; it is reused for later installs on that TV.
@@ -164,7 +164,7 @@ Get a free API key from [themoviedb.org](https://www.themoviedb.org/settings/api
 ## Project structure
 
 ```
-Lumora-TV_tizen/
+Lumora-TV_iptv_tizen/
 ├── config.xml        Tizen widget manifest
 ├── index.html        UI markup
 ├── css/style.css     Themes and layout
