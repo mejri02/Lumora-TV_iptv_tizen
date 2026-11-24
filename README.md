@@ -40,9 +40,26 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 
 ### Themes
 
-16 built-in themes, including a few image-based ones. A selection:
+**15 built-in themes**, each with its own accent colours and animated backdrop — two of them (Synthwave, Jujutsu Kaisen) are full video backgrounds. Cycle them in **Settings → Appearance → Theme** or with the remote:
 
-![Themes](screenshots/13-themes.jpg)
+Spider-Man · Sakura · Batman · Goku · Football · Angry Birds · One Piece · Neon Spider · Spider Skyline · Synthwave · Solo Leveling · Mega City · Ultra Instinct · Fortnite · Jujutsu Kaisen
+
+Real captures from v4.9.10:
+
+| | |
+|---|---|
+| ![Solo Leveling](screenshots/22-theme-solo-home.jpg) | ![Synthwave](screenshots/25-theme-synthwave-home.jpg) |
+| **Solo Leveling** | **Synthwave** — animated video background |
+| ![One Piece](screenshots/27-theme-onepiece-home.jpg) | ![Jujutsu Kaisen](screenshots/26-theme-jjk-home.jpg) |
+| **One Piece** | **Jujutsu Kaisen** — animated video background |
+| ![Spider Skyline](screenshots/23-theme-skyline-red-home.jpg) | |
+| **Spider Skyline** | |
+
+And the **Your sources** screen in three themes:
+
+| | | |
+|---|---|---|
+| ![Spider Skyline sources](screenshots/21-theme-skyline-sources.jpg) | ![JJK sources](screenshots/26-theme-jjk-home.jpg) | ![Neon Spider sources](screenshots/20-theme-neonspider-sources.jpg) |
 
 > The screenshots above were captured with a local demo playlist (test pattern streams), not real channels.
 
@@ -54,7 +71,7 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 - **Live TV, Movies, Series** with categories, channel counts and fast search.
 - **Favorites** and **Continue watching** — movies and episodes resume where you left off.
 - **Program guide (EPG)** and an info bar with channel number and stream details.
-- **Player engines** — Samsung AVPlay, with HTML5 + [hls.js](https://github.com/video-dev/hls.js) and [mpegts.js](https://github.com/xqq/mpegts.js) fallbacks. Chosen automatically, or set manually.
+- **Player engines** — Samsung AVPlay, with HTML5 + [hls.js](https://github.com/video-dev/hls.js), [mpegts.js](https://github.com/xqq/mpegts.js) and [DASH.js](https://github.com/Dash-Industry-Forum/dash.js) fallbacks. Chosen automatically, or set manually.
 - **Audio / subtitle tracks**, picture size (Fit / Stretch / Zoom), sleep timer, last-channel jump, auto-play next episode.
 - **Auto-reconnect** with configurable retries when a stream drops.
 - **Parental lock** with PIN, and lockable categories.
@@ -62,7 +79,7 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 - **Phone link** — pair a phone with a QR code to add sources without typing on the remote.
 - **Backup / restore** of sources, favorites and progress.
 - **Optional TMDB** descriptions and cast for movies and series.
-- **English and Arabic** (RTL), 12/24-hour clock, 16 themes.
+- **English and Arabic** (full RTL layout), 12/24-hour clock, 15 themes with animated backdrops.
 
 ---
 
