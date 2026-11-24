@@ -59,7 +59,7 @@ And the **Your sources** screen in three themes:
 
 | | | |
 |---|---|---|
-| ![Spider Skyline sources](screenshots/21-theme-skyline-sources.jpg) | ![JJK sources](screenshots/26-theme-jjk-home.jpg) | ![Neon Spider sources](screenshots/20-theme-neonspider-sources.jpg) |
+| ![Spider Skyline sources](screenshots/21-theme-skyline-sources.jpg) | ![JJK sources](screenshots/24-theme-jjk-sources.jpg) | ![Neon Spider sources](screenshots/20-theme-neonspider-sources.jpg) |
 
 > The screenshots above were captured with a local demo playlist (test pattern streams), not real channels.
 
