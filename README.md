@@ -8,7 +8,8 @@
 Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora handles the rest.
 
 ![Platform](https://img.shields.io/badge/platform-Samsung%20Tizen%205.0%2B-1428A0)
-![Version](https://img.shields.io/badge/version-4.9.10-8b5cf6)
+![Version](https://img.shields.io/badge/version-4.9.17-8b5cf6)
+![License](https://img.shields.io/badge/license-MIT-22c55e)
 ![Languages](https://img.shields.io/badge/languages-English%20%7C%20Arabic-22d3ee)
 
 ![Lumora TV demo](screenshots/demo.gif)
@@ -37,6 +38,23 @@ Bring your own M3U playlist, Xtream Codes account or Stalker portal — Lumora h
 | **Settings** | **Link a phone** — pair by QR code or code |
 | ![Arabic](screenshots/11-arabic-rtl.jpg) | ![Arabic menu](screenshots/12-arabic-menu.jpg) |
 | **Arabic** with full right-to-left layout | **Arabic** main menu |
+
+### What's new in the interface (v4.9.17)
+
+| | |
+|---|---|
+| ![Splash](screenshots/30-splash.jpg) | ![Loading](screenshots/31-movies-loading.jpg) |
+| **Splash** with the new "Developed by" credit | **Loading banner** — spinner, seconds counter and progress bar while a big library downloads |
+| ![Movies](screenshots/32-movies-grid.jpg) | ![Episodes](screenshots/37-episodes.jpg) |
+| **Movies** — posters, ratings, details panel and a green **✓ watched** badge | **Series** — seasons, episodes and ✓ on episodes you finished |
+| ![Paused](screenshots/33-player-paused.jpg) | ![Seek](screenshots/34-seek-flash.jpg) |
+| **Pause indicator** — big icon, time and "Press OK to resume", so a pause never looks like a freeze | **Seek flash** — shows +10s / −10s and the new position |
+| ![Quick menu](screenshots/35-quick-menu.jpg) | ![Next episode](screenshots/38-next-episode.jpg) |
+| **Quick menu** — speed, picture size, sleep timer, audio/subtitles, "No sound? Try another player" | **Up next** card with countdown — OK to play now, any other key to cancel |
+| ![Error](screenshots/36-error-retry.jpg) | ![Storage](screenshots/39-settings-storage.jpg) |
+| **Clear errors** with a retry hint (OK or RED), e.g. access denied / geo-blocked account | **Storage** — see how much the app uses and clear the image cache |
+
+> The new screenshots use a fictional demo library and test-pattern video, not real content.
 
 ### Themes
 
@@ -67,15 +85,18 @@ And the **Your sources** screen in three themes:
 
 ## Features
 
-- **Three source types** — M3U / M3U8 playlists, Xtream Codes accounts, Stalker (MAC) portals. Multiple sources, switch any time.
+- **Three source types** — M3U / M3U8 playlists, Xtream Codes accounts, Stalker (MAC) portals (via an optional [Vercel proxy](#stalker-portals--the-vercel-proxy)). Multiple sources, switch any time.
 - **Live TV, Movies, Series** with categories, channel counts and fast search.
 - **Favorites** and **Continue watching** — movies and episodes resume where you left off.
 - **Program guide (EPG)** and an info bar with channel number and stream details.
 - **Player engines** — Samsung AVPlay, with HTML5 + [hls.js](https://github.com/video-dev/hls.js), [mpegts.js](https://github.com/xqq/mpegts.js) and [DASH.js](https://github.com/Dash-Industry-Forum/dash.js) fallbacks. Chosen automatically, or set manually.
-- **Audio / subtitle tracks**, picture size (Fit / Stretch / Zoom), sleep timer, last-channel jump, auto-play next episode.
+- **Audio / subtitle tracks**, subtitle **delay and size**, **playback speed**, picture size (Fit / Stretch / Zoom), sleep timer, last-channel jump.
+- **Clear pause state**, seek feedback, loading banner with progress, and **retry hints** when a server answers with an error.
+- **Watched ✓** marks on movies and episodes, **Up next** card and auto-play of the next episode.
+- **No sound? Try another player** — switches engine automatically when a stream has no audio.
 - **Auto-reconnect** with configurable retries when a stream drops.
 - **Parental lock** with PIN, and lockable categories.
-- **Hide / reorder categories**, sort A–Z, library cache with background refresh.
+- **Hide / reorder categories**, sort A–Z, library cache with background refresh, and **storage tools** (usage meter, clear image cache) to keep the TV's memory free.
 - **Phone link** — pair a phone with a QR code to add sources without typing on the remote.
 - **Backup / restore** of sources, favorites and progress.
 - **Optional TMDB** descriptions and cast for movies and series.
@@ -167,10 +188,10 @@ The available keys are always shown in the bar at the bottom of each screen.
 | Section | Options |
 |---|---|
 | **Appearance** | Language, theme, clock, animations |
-| **Playback** | Picture size, player engine, buffer size, resume, auto-next, skip step, info-bar time, reconnect attempts, keep awake, diagnostics, sleep timer |
+| **Playback** | Picture size, player engine, buffer size, resume, auto-next, skip step, info-bar time, reconnect attempts, keep awake, diagnostics, sleep timer, speed, subtitle delay / size |
 | **Library** | Sort order, open last source on launch, background refresh, cache lifetime, TMDB API key |
 | **Security** | Parental lock, locked categories, PIN |
-| **Backup / Data** | Export / import backup, clear cache, favorites, progress, reset, erase all |
+| **Backup / Data** | Storage used, clear image cache, export / import backup, clear libraries, favorites, progress, reset, erase all |
 
 ### TMDB descriptions (optional)
 
@@ -178,30 +199,72 @@ Get a free API key from [themoviedb.org](https://www.themoviedb.org/settings/api
 
 ---
 
+## Stalker portals & the Vercel proxy
+
+Stalker (MAC) portals need HTTP headers (`Cookie`, `Bearer` token, STB user-agent) that a TV browser cannot send, so Lumora sends the portal calls through a small proxy. **You can host your own for free on Vercel** — no coding, only the web dashboard. Only the portal API goes through it; video streams play directly from the TV.
+
+The ready-to-deploy proxy lives in its own repo: **[github.com/mejri02/lumora-stalker-proxy](https://github.com/mejri02/lumora-stalker-proxy)**.
+
+**1. Get the proxy** — open the [`lumora-stalker-proxy`](https://github.com/mejri02/lumora-stalker-proxy) repo and click **Fork** (top right) to copy it to your own GitHub account. Nothing to download or upload — the repo already contains everything Vercel needs (`api/index.js`, `vercel.json`, `package.json`).
+
+**2. Deploy on Vercel**
+1. Open [vercel.com](https://vercel.com) and sign in with GitHub (free *Hobby* plan).
+2. **Add New… → Project** → pick your forked `lumora-stalker-proxy` repo → **Import**.
+3. Keep the defaults (Framework **Other**) → **Deploy**.
+4. Open `https://YOUR-PROJECT.vercel.app/api` — you should see `{"ok":true,"service":"lumora-stalker-proxy",…}`.
+
+**3. Add it to Lumora**
+1. **Add source → Stalker portal** → enter the portal URL and MAC.
+2. Open **Advanced → Cookie proxy URL** and enter `https://YOUR-PROJECT.vercel.app/api`.
+3. **Test connection → Save**. Later: highlight the source and press 🟢 **Green** to edit.
+
+> **From the phone / web interface:** "Link phone" sends only the portal URL and MAC, so the source arrives using the app's default proxy. Once it appears on the TV, press 🟢 **Green → Advanced → Cookie proxy URL** and paste your own address. Building the app yourself? Set `STALKER_PROXY` in `js/config.js` to use yours for every source.
+
+**Keep it private (recommended):** in Vercel → *Settings → Environment Variables* add `PROXY_KEY` (a long secret) and use `https://YOUR-PROJECT.vercel.app/api?key=SECRET` in the app; optionally `ALLOWED_HOSTS` to lock it to your portal. Portal blocked in your country? Change the **Function Region** in Vercel → *Settings → Functions*.
+
+Full guide, options and troubleshooting: see the [proxy repo's README](https://github.com/mejri02/lumora-stalker-proxy#readme).
+
+---
+
 ## Project structure
 
 ```
 Lumora-TV_iptv_tizen/
-├── config.xml        Tizen widget manifest
-├── index.html        UI markup
-├── css/style.css     Themes and layout
-├── images/           Tiles, backdrops, theme art
+├── config.xml          Tizen widget manifest
+├── index.html          UI markup
+├── css/style.css       Themes and layout
+├── images/             Tiles, backdrops, theme art
 └── js/
-    ├── app.js        UI, navigation, screens
-    ├── player.js     AVPlay / hls.js / mpegts.js engine chain
-    ├── m3u.js        M3U parser
-    ├── xtream.js     Xtream Codes client
-    ├── stalker.js    Stalker portal client
-    ├── tmdb.js       TMDB metadata
-    ├── net.js        Network layer, retries, timeouts
-    ├── store.js      Library cache
-    ├── settings.js   Persistent settings
-    ├── i18n.js       English / Arabic strings
-    ├── qr.js         QR code for phone pairing
-    └── lib/          hls.min.js, mpegts.js
+    ├── app/            UI layer
+    │   ├── core.js       State, sources, storage keys
+    │   ├── browse.js     Lists, posters, loading banner, retry hints
+    │   ├── playback.js   Pause UI, seek flash, Up next, watched marks
+    │   ├── quick.js      Quick menu (speed, subtitles, engine switch)
+    │   ├── settings.js   Settings screen, storage tools
+    │   └── library.js · favorites.js · link.js · input.js · hub.js · home.js · form.js · modal.js · overlays.js · catalog.js · ui.js · start.js
+    ├── player.js       AVPlay / HTML5 / hls.js / mpegts.js / dash.js engine chain
+    ├── playerctl.js    Speed, subtitle delay/size, no-audio fallback
+    ├── xtream.js       Xtream Codes client
+    ├── stalker.js      Stalker portal client (uses the proxy)
+    ├── m3u.js          M3U parser
+    ├── tmdb.js         TMDB metadata
+    ├── net.js          Network layer, retries, image cache
+    ├── store.js        IndexedDB library cache
+    ├── i18n.js         English / Arabic strings
+    ├── settings.js     Persistent settings
+    ├── icons.js        Icon set
+    ├── config.js       Version, default proxy, relay
+    ├── qr.js           QR code for phone pairing
+    └── lib/            hls.min.js, mpegts.js, dash.js
 ```
 
 To repackage, zip the contents of the folder (with `config.xml` at the root) and rename the archive to `.wgt`.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE).
 
 ---
 
