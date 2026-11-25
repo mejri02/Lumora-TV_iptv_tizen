@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1280, initial-scale=1"/>
+<title>Ostora TV</title>
+<link rel="stylesheet" href="css/style.css"/>
+<script src="lib/pako.min.js"></script>
+<script src="lib/hls.min.js"></script>
+<script src="lib/dash.all.min.js"></script>
+</head>
+<body>
+<div id="splash">
+  <div class="splash-logo">OSTORA TV</div>
+  <div class="splash-status" id="splash-status">جارٍ التحميل…</div>
+  <div class="splash-error" id="splash-error"></div>
+</div>
+
+<div id="app" class="hidden">
+  <header id="topbar">
+    <div id="tabs">
+      <button class="tab active" data-tab="home">الرئيسية</button>
+      <button class="tab" data-tab="matches">المباريات</button>
+      <button class="tab" data-tab="favorites">المفضلة</button>
+    </div>
+  </header>
+
+  <main id="views">
+    <section id="view-home" class="view active"></section>
+    <section id="view-matches" class="view"></section>
+    <section id="view-favorites" class="view"></section>
+  </main>
+</div>
+
+<!-- المشغّل -->
+<div id="player" class="hidden">
+  <video id="video"></video>
+  <div id="player-ui">
+    <div id="player-title"></div>
+    <div id="player-hint">اضغط رجوع للخروج</div>
+    <div id="player-servers"></div>
+  </div>
+</div>
+
+<script src="js/crypto.js"></script>
+<script src="js/api.js"></script>
+<script src="js/streams.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

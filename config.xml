@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://ostora/neo" version="4.9.10" viewmodes="maximized">
+    <tizen:application id="OstoraNeo" package="OstoraNeo" required_version="4.0"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://tizen.org/feature/network.internet"/>
+    <icon src="icons/icon.png"/>
+    <name>Ostora TV</name>
+    <tizen:profile name="tv-samsung"/>
+    <tizen:setting screen-orientation="landscape" contextmenu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey="disable"/>
+    <access origin="*" subdomains="true"/>
+</widget>
